@@ -45,6 +45,7 @@ NC    := \033[0m
 
 # ================================  TARGETS  ==================================
 
+SHELL         := /usr/bin/env bash
 .DEFAULT_GOAL := all
 
 .PHONY: all
@@ -78,7 +79,7 @@ $(TARGET): $(OBJS)
 .PHONY: run
 run: ## Run C++ code
 	@echo -e "$(C_ORA)Running $(TARGET) $(NC)"
-	./$(TARGET) $(XDIM) $(YDIM)
+	./$(TARGET)
 #______________________________________________________________________________
 
 .PHONY: clean
