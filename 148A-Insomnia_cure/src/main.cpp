@@ -8,33 +8,44 @@ int main() {
   cin.tie(0);
   
   // Read the information
-  int d;
-  array<int, 4> arr;
-  array<int, 4> cnt;
-  
-  for (int i = 0; i < 4; i++) {
-    cin >> arr[i];
-  }
-
-  cin >> d;
+  int k, l, m, n, d;
+  cin >> k >> l >> m >> n >> d;
 
   /* Brute force */
-  // unordered_set<int> s;
-  // int cnt, t;
-  // for (int i = 0; i < 4; i++) {
-  //   t = arr[i];
-  //   while (t <= d) {
-  //     s.insert(t);
-  //     t += arr[i];
+  // int cnt = 0;
+  // for (int i = 1; i <= d; i++) {
+  //   if (i%k == 0 || i%l == 0 || i%m == 0 || i%n == 0) {
+  //     cnt++;
   //   }
   // }
-  // cout << s.size() << "\n";
+  // cout << cnt << "\n";
 
   /* Using some math */
-  for (int i = 0; i < 4; i++) {
-    cnt[i] = floor(d/);
-  }
+  int a = d/k;
+  int b = d/l;
+  int c = d/m;
+  int e = d/n;
+  int s1 = a + b + c + e;
 
-
+  int ab = d/lcm(k,l);
+  int ac = d/lcm(k,m);
+  int ae = d/lcm(k,n);
+  int bc = d/lcm(l,m);
+  int be = d/lcm(l,n);
+  int ce = d/lcm(m,n);
+  int s2 = ab + ac + ae + bc + be + ce;
+  
+  int abc = d/lcm(lcm(k,l), m);
+  int abe = d/lcm(lcm(k,l), n);
+  int ace = d/lcm(lcm(k,m), n);
+  int bce = d/lcm(lcm(l,m), n);
+  int s3 = abc + abe + ace + bce;
+  
+  int abce = d/lcm(lcm(lcm(k,l), m), n);
+  int s4 = abce;
+  
+  int cnt = s1 - s2 + s3 - s4;
+  cout << cnt << "\n";
+  
   return 0;
 }
